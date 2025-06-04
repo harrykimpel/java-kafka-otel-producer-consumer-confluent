@@ -1,0 +1,4 @@
+common: &default_settings
+  class_transformer:
+    com.newrelic.instrumentation.kafka-clients-spans-0.11.0.0:
+      enabled: true

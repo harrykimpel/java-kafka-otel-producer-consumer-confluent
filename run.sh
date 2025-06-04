@@ -1,0 +1,1 @@
+podman run -v ./confluent-collector.yaml:/etc/otelcol-contrib/config.yaml -e NEW_RELIC_OTLP_ENDPOINT=https://otlp.nr-data.net -e NEW_RELIC_API_KEY=MY_NEW_RELIC_LICENSE_KEY -e CONFLUENT_API_KEY=MY_CONFLUENT_API_KEY -e CONFLUENT_CLUSTER_ID="MY_CONFLUENT_CLUSTER_ID" -e CONFLUENT_API_SECRET="MY_CONFLUENT_API_SECRET" otel/opentelemetry-collector-contrib:0.126.0

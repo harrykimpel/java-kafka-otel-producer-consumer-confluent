@@ -1,0 +1,5 @@
+{
+    "java.compile.nullAnalysis.mode": "automatic",
+    "pieces.cloudCapabilities": "Blended",
+    "pieces.telemetry": true
+}

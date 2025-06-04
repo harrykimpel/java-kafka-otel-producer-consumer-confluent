@@ -1,0 +1,57 @@
+receivers:
+  prometheus:
+    config:
+      scrape_configs:
+        # - job_name: 'otel-collector'
+        #   scrape_interval: 2m
+        #   scrape_timeout: 1m
+        #   honor_timestamps: true
+        #   static_configs:
+        #     - targets: ['api.telemetry.confluent.cloud']
+        #   scheme: https
+        #   basic_auth:
+        #     username: $CONFLUENT_API_KEY
+        #     password: $CONFLUENT_API_SECRET
+        #   metrics_path: /v2/metrics/cloud/export
+        #   params:
+        #     "resource.kafka.id":
+        #       - $CONFLUENT_CLUSTER_ID #logical cluster ID
+        - job_name: Confluent Cloud
+          scrape_interval: 1m
+          scrape_timeout: 1m
+          honor_timestamps: true
+          static_configs:
+            - targets:
+                - api.telemetry.confluent.cloud
+          scheme: https
+          basic_auth:
+            username: CDM7B5RTIUDHGSZJ
+            password: SokX+2TjEXgP6csPoPK0akza2j94MxwGsUVzaUNscs1No7WXGtfMykPE6Yv8+1sh
+          metrics_path: /v2/metrics/cloud/export
+          params:
+            "resource.kafka.id":
+              - lkc-9k5gx5
+              - lkc-3g1njm
+            # OPTIONAL - You can include monitoring for Confluent connectors or schema registry's by including the ID here.
+            #"resource.connector.id":
+            #  - $CONFLUENT_CONNECTOR_ID
+            #"resource.schema_registry.id":
+            #  - $CONFLUENT_SCHEMA_REGISTRY_ID
+processors:
+  batch:
+exporters:
+  otlphttp:
+    endpoint: ${NEW_RELIC_OTLP_ENDPOINT}
+    headers:
+      api-key: ${NEW_RELIC_API_KEY}
+service:
+  pipelines:
+    metrics:
+      receivers: [prometheus]
+      processors: [batch]
+      exporters: [otlphttp]
+  telemetry:
+    logs:
+      level: "DEBUG"
+      development: true
+      encoding: "json"

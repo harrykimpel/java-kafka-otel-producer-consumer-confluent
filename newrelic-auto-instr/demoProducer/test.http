@@ -1,0 +1,36 @@
+
+POST http://localhost:8080/orders
+Content-Type: application/json
+
+{
+    "customerId": 1,
+    "orderId": 1,
+    "dateOfCreation": "2025-05-28",
+    "content": "I love coffee in Ljubljana"
+}
+
+###
+
+curl -X POST -H 'Content-Type: application/json' \
+    -d '{ "orderId": 1, "dateOfCreation": "2025-05-28", "content": "I love coffee in Ljubljana"}' \
+    http://localhost:8080/orders
+
+###
+
+for i in {1..5}; do \
+    for j in {1..10}; do \
+        curl -X POST -H 'Content-Type: application/json' \
+            -d '{ "customerId":  '$i', "orderId": '$j', "dateOfCreation": "2025-05-28", "content": "I love coffee in Ljubljana"}' \
+            http://localhost:8080/orders \
+    ; done
+; done
+
+###
+
+for i in {6..8}; do \
+    for j in {1..3}; do \
+        curl -X POST -H 'Content-Type: application/json' \
+            -d '{ "customerId":  '$i', "orderId": '$j', "dateOfCreation": "2025-05-28", "content": "I love coffee in Ljubljana"}' \
+            http://localhost:8080/orders \
+    ; done
+; done
