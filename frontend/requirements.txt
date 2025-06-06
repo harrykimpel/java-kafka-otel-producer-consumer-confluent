@@ -2,3 +2,4 @@ openai
 markdown
 newrelic
 flask
+requests

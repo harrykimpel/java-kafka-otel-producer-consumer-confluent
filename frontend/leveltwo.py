@@ -36,15 +36,17 @@ def home():
 def prompt():
     input_prompt = request.form.get("input")
     llm_prompt = "Where does the firstname '"+input_prompt + \
-        "' come from? Please provide an explanation with max. 100 characters."
-    output_prompt = chatCompletion(llm_prompt)
+        "' come from?"
+    original_input = input_prompt
+    input_prompt += " Please provide an explanation with max. 255 words."
+    output_prompt = chatCompletion(input_prompt)
     html_output = markdown.markdown(output_prompt)
 
     # make a POST request to localhost:8080/orders endpoint
     # with the input and output prompts
     import requests
     response = requests.post(
-        "http://localhost:8080/orders",
+        "http://localhost:8000/orders",
         json={
             "customerId": "1",
             "orderId": "1",
@@ -56,7 +58,7 @@ def prompt():
     if response.status_code != 200:
         print("Error sending data to the orders service:", response.text)
 
-    return render_template("index.html", input=input_prompt, output=html_output)
+    return render_template("index.html", input=original_input, output=html_output)
 
 
 # make the server publicly available via port 5004

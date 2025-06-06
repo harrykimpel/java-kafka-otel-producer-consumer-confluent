@@ -7,9 +7,25 @@ import java.util.Date;
 @Data
 public class Order {
 
-    private String orderID;
+    private String customerId;
+
+    public String getCustomerId() {
+        return customerId;
+    }
+
+    private String orderId;
+
+    public String getOrderId() {
+        return orderId;
+    }
 
     private Date dateOfCreation;
+
+    private String input;
+
+    public String getInput() {
+        return input;
+    }
 
     private String content;
 

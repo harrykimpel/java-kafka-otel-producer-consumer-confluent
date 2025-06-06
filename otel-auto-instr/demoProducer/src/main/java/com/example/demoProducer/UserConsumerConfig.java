@@ -63,9 +63,6 @@ public class UserConsumerConfig {
     @Bean("userConsumerFactoryNotificationService")
     public ConsumerFactory<String, User> userConsumerFactory() {
         Map<String, Object> props = new HashMap<>();
-        props.put(
-                ConsumerConfig.INTERCEPTOR_CLASSES_CONFIG,
-                TracingConsumerInterceptor.class.getName());
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapServers);
         props.put("sasl.jaas.config", saslJaaSConfig);
         props.put("security.protocol", securityProtocol);
