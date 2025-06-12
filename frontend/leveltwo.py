@@ -38,20 +38,27 @@ def prompt():
     input_prompt = request.form.get("input")
     llm_prompt = "Where does the firstname '"+input_prompt + \
         "' come from?"
+    llm_prompt = "What is the ethnicity of the first name '" + \
+        input_prompt + "'? " \
+        "Mention the top matching ethnicity and the second level alternative."
+    # in the context of names and their origins. " +\
+    # "Provide just a few words of the main ethnicity, e.g. 'German', 'English', 'French', etc including a mention of a second alternative."
+
     original_input = input_prompt
-    input_prompt += " Please provide an explanation with max. 255 words."
+    input_prompt = llm_prompt
+    input_prompt += " Please provide an explanation with max. 50 words."
     output_prompt = chatCompletion(input_prompt)
     html_output = markdown.markdown(output_prompt)
 
     # make a POST request to localhost:8080/orders endpoint
     # with the input and output prompts
     response = requests.post(
-        "http://localhost:8000/orders",
+        "http://localhost:8080/orders",
         json={
             "customerId": "1",
             "orderId": "1",
             "dateOfCreation": "2025-06-02",
-            "input": input_prompt,
+            "input": original_input,
             "content": output_prompt
         }
     )

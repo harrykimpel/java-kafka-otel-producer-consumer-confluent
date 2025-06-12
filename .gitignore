@@ -3,3 +3,5 @@
 target
 .venv
 *-agent.log
+opentelemetry-javaagent.jar
+names.http

@@ -14,8 +14,8 @@ newrelic.agent.initialize('newrelic.ini')
 conf = {'bootstrap.servers': 'pkc-pgq85.us-west-2.aws.confluent.cloud:9092',
         'security.protocol': 'SASL_SSL',
         'sasl.mechanism': 'PLAIN',
-        'sasl.username': 'UPASX6NMKNXCJBVL',
-        'sasl.password': 'zNKEiOHTGZjltelaUUCc5UPrxF0wD98cUDa4mdDAeiqCxKluMFV69dp3nPBlltgy',
+        'sasl.username': 'MY_CONFLUENT_USERNAME',
+        'sasl.password': 'MY_CONFLUENT_PASSWORD',
         'group.id': 'foo',
         'auto.offset.reset': 'smallest'}
 
@@ -24,6 +24,8 @@ consumer = Consumer(conf)
 running = True
 
 topics = ['create-order']
+
+NAMSOR_API_KEY = os.environ["NAMSOR_API_KEY"]
 
 model_id = os.environ["MODEL"]
 lm = dspy.LM(model_id)
@@ -88,6 +90,44 @@ def msg_process(msg):
 
 
 @newrelic.agent.background_task()
+def getEthnicityForFirstname(firstname):
+
+    # create a HTTP POST requests based on the firstname
+    # POST https://v2.namsor.com/NamSorAPIv2/api2/json/diasporaBatch
+    # X-API-KEY: 0eefa09211bb79c3185a8bff0d79774f
+    # Content-Type: application/json
+
+    # {
+    #     "personalNames": [
+    #         {"firstName": "Harry"}
+    #     ]
+    # }
+    import requests
+    url = "https://v2.namsor.com/NamSorAPIv2/api2/json/diasporaBatch"
+    headers = {
+        "X-API-KEY": NAMSOR_API_KEY,
+        "Content-Type": "application/json"
+    }
+    data = {
+        "personalNames": [
+            {"firstName": firstname}
+        ]
+    }
+    response = requests.post(url, headers=headers, json=data)
+    firstNameEthnicity = "Unknown"
+    if response.status_code == 200:
+        result = response.json()
+        # print("Result: {}".format(result))
+        if result and "personalNames" in result and len(result["personalNames"]) > 0:
+            firstNameEthnicity = result["personalNames"][0].get(
+                "ethnicity", "Unknown")
+            firstNameEthnicityAlt = result["personalNames"][0].get(
+                "ethnicityAlt", "Unknown")
+
+    return firstNameEthnicity, firstNameEthnicityAlt
+
+
+@newrelic.agent.background_task()
 def metric(firstname, response, trace=None):
     # question, answer, tweet = \
     #     "Where does the firstname '"+firstname + "' come from? Please provide an explanation with max. 100 characters.", \
@@ -97,19 +137,31 @@ def metric(firstname, response, trace=None):
     gold_answer = "Not sure how to answer this question, but I will try my best."
 
     # check if the question contains certain keywords
-    if "New Relic" in question or "NewRelic" in question:
-        # gold_answer = "New Relis is a monitoring and analytics platform"
-        gold_answer = "New Relic is a software analytics and performance monitoring company that provides tools for developers and IT operations teams to monitor and optimize the performance of their applications and infrastructure. Founded in 2008, New Relic offers a suite of products that help organizations gain insights into their software performance, user experience, and overall system health. Key features and offerings of New Relic include: 1. **Application Performance Monitoring (APM)**: New Relic's APM tool allows users to monitor the performance of their applications in real-time, providing insights into response times, error rates, and transaction traces. It helps identify bottlenecks and performance issues. 2. **Infrastructure Monitoring**: This feature enables users to monitor the health and performance of their servers, containers, and cloud infrastructure. It provides visibility into resource utilization, system metrics, and alerts for potential issues. 3. **Browser Monitoring**: New Relic offers tools to monitor the performance of web applications from the user's perspective, including page load times, JavaScript errors, and user interactions. 4. **Mobile Monitoring**: This feature allows developers to track the performance of mobile applications, providing insights into app crashes, network requests, and user engagement. 5. **Synthetics Monitoring**: New Relic Synthetics enables users to simulate user interactions with their applications to proactively monitor uptime and performance from various locations around the world. 6. **Logs Management**: New Relic provides log management capabilities that allow users to collect, analyze, and visualize log data from their applications and infrastructure. 7. **Dashboards and Insights**: Users can create custom dashboards to visualize key performance metrics and gain insights into application performance and user behavior. 8. **Integrations**: New Relic integrates with a wide range of third-party tools and services, making it easier for organizations to incorporate performance monitoring into their existing workflows. New Relic operates on a subscription-based pricing model, and its services are available in the cloud, making it accessible for organizations of all sizes. The company has gained popularity among developers and IT teams for its user-friendly interface and powerful analytics capabilities."
-    elif "Harry Kimpel" in question or "HarryKimpel" in question or "Harald Kimpel" in question or "HaraldKimpel" in question:
-        gold_answer = "Harry Kimpel is a software engineer and entrepreneur known for his work in the field of software development and technology. He has contributed to various projects and initiatives, particularly in the areas of web development, software architecture, and open-source software. Harry Kimpel is also recognized for his involvement in the tech community, sharing knowledge and expertise through talks, articles, and contributions to open-source projects."
+    # if "New Relic" in question or "NewRelic" in question:
+    #     # gold_answer = "New Relis is a monitoring and analytics platform"
+    #     gold_answer = "New Relic is a software analytics and performance monitoring company that provides tools for developers and IT operations teams to monitor and optimize the performance of their applications and infrastructure. Founded in 2008, New Relic offers a suite of products that help organizations gain insights into their software performance, user experience, and overall system health. Key features and offerings of New Relic include: 1. **Application Performance Monitoring (APM)**: New Relic's APM tool allows users to monitor the performance of their applications in real-time, providing insights into response times, error rates, and transaction traces. It helps identify bottlenecks and performance issues. 2. **Infrastructure Monitoring**: This feature enables users to monitor the health and performance of their servers, containers, and cloud infrastructure. It provides visibility into resource utilization, system metrics, and alerts for potential issues. 3. **Browser Monitoring**: New Relic offers tools to monitor the performance of web applications from the user's perspective, including page load times, JavaScript errors, and user interactions. 4. **Mobile Monitoring**: This feature allows developers to track the performance of mobile applications, providing insights into app crashes, network requests, and user engagement. 5. **Synthetics Monitoring**: New Relic Synthetics enables users to simulate user interactions with their applications to proactively monitor uptime and performance from various locations around the world. 6. **Logs Management**: New Relic provides log management capabilities that allow users to collect, analyze, and visualize log data from their applications and infrastructure. 7. **Dashboards and Insights**: Users can create custom dashboards to visualize key performance metrics and gain insights into application performance and user behavior. 8. **Integrations**: New Relic integrates with a wide range of third-party tools and services, making it easier for organizations to incorporate performance monitoring into their existing workflows. New Relic operates on a subscription-based pricing model, and its services are available in the cloud, making it accessible for organizations of all sizes. The company has gained popularity among developers and IT teams for its user-friendly interface and powerful analytics capabilities."
+    # elif "Harry Kimpel" in question or "HarryKimpel" in question or "Harald Kimpel" in question or "HaraldKimpel" in question:
+    #     gold_answer = "Harry Kimpel is a software engineer and entrepreneur known for his work in the field of software development and technology. He has contributed to various projects and initiatives, particularly in the areas of web development, software architecture, and open-source software. Harry Kimpel is also recognized for his involvement in the tech community, sharing knowledge and expertise through talks, articles, and contributions to open-source projects."
+
+    firstNameEthnicity, firstNameEthnicityAlt = getEthnicityForFirstname(
+        firstname)
+    if firstNameEthnicity != "Unknown":
+        gold_answer = f"The first name '{firstname}' is typically associated with the ethnicity of '{firstNameEthnicity}'. An alternative ethnicity is '{firstNameEthnicityAlt}'."
+        # in the context of names and their origins
+        # gold_answer = f"{firstNameEthnicity}"
 
     # question = "Where does the firstname '" + firstname + \
     #        "' come from? Please provide an explanation with max. 255 words."
     # tweet = response  # Assuming the response is a tweet
+    # question = "What is the ethnicity of the first name '" + \
+    #    firstname + "' in the context of names and their origins."
+    question = "What is the ethnicity of the first name '" + \
+        firstname + "'? " \
+        "Mention the top matching ethnicity and the second level alternative."
 
     # engaging = "Does the assessed text make for a self-contained, engaging tweet?"
     # correct = f"The text should answer `{question}` with `{answer}`. Does the assessed text contain this answer?"
-    print("question: {}".format(question))
+    # print("question: {}".format(question))
 
     # correct = dspy.Predict(Assess)(assessed_text=tweet,
     #                                assessment_question=correct)
@@ -126,12 +178,12 @@ def metric(firstname, response, trace=None):
     # metric = SemanticF1()
 
     # Define a simple cot function or replace with appropriate logic
-    def cot(question):
-        # Example: Use the language model to generate a response
-        return lm(question)
+    # def cot(question):
+    #    # Example: Use the language model to generate a response
+    #    return lm(question)
 
     # # Produce a prediction from our `cot` module, using the `example` above as input.
-    pred = cot(question)
+    # pred = cot(question)
     # qares.response = qares.answer  # Set the response from the qa module
     # print("pred: {}".format(pred))
 
@@ -142,11 +194,12 @@ def metric(firstname, response, trace=None):
     # print(qa_pair.question)
     # print(qa_pair.answer)
 
+    pred = response
     gold = dspy.Example(question=question,
                         answer=gold_answer,
                         # Use the response from the prediction
-                        response=pred).with_inputs("question")
-    pred3 = dspy.Example(response=pred)  # Use the response from the prediction
+                        response=pred).with_inputs("question", "answer", "response")
+    # pred3 = dspy.Example(response=pred)  # Use the response from the prediction
     # Compute the metric score for the prediction.
     # score = metric(gold, pred3)
 
@@ -157,7 +210,7 @@ def metric(firstname, response, trace=None):
 
     print(f"Question: \t {gold.question}\n")
     print(f"Gold Reponse: \t {gold.answer}\n")
-    print(f"Predicted Response: \t {gold.response}\n")
+    print(f"LLM Response: \t {gold.response}\n")
     print(f"Semantic F1 Score: {score:.2f}")
 
     # correct, engaging = [m.assessment_answer for m in [correct, engaging]]
@@ -174,7 +227,8 @@ def metric(firstname, response, trace=None):
 @newrelic.agent.background_task()
 def token_overlap_metric(example, pred, trace=None):
     gold_tokens = set(example.answer.lower().split())
-    pred_tokens = set(pred.answer.lower().split())
+    # pred_tokens = set(pred.answer.lower().split())
+    pred_tokens = set(example.response.lower().split())
     intersection = gold_tokens & pred_tokens
     # print(f"intersection: {intersection}")
     union = gold_tokens | pred_tokens
