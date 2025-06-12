@@ -176,9 +176,9 @@ def token_overlap_metric(example, pred, trace=None):
     gold_tokens = set(example.answer.lower().split())
     pred_tokens = set(pred.answer.lower().split())
     intersection = gold_tokens & pred_tokens
-    print(f"intersection: {intersection}")
+    # print(f"intersection: {intersection}")
     union = gold_tokens | pred_tokens
-    print(f"union: {union}")
+    # print(f"union: {union}")
     if not union:
         return 1.0 if not intersection else 0.0
     return len(intersection) / len(union)  # Jaccard similarity

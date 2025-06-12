@@ -4,6 +4,7 @@ import os
 from openai import OpenAI
 from flask import Flask, render_template, request
 import markdown
+import requests
 
 client = OpenAI(
     base_url="https://models.inference.ai.azure.com",
@@ -44,7 +45,6 @@ def prompt():
 
     # make a POST request to localhost:8080/orders endpoint
     # with the input and output prompts
-    import requests
     response = requests.post(
         "http://localhost:8000/orders",
         json={
