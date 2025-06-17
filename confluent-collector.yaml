@@ -25,8 +25,8 @@ receivers:
                 - api.telemetry.confluent.cloud
           scheme: https
           basic_auth:
-            username: CDM7B5RTIUDHGSZJ
-            password: SokX+2TjEXgP6csPoPK0akza2j94MxwGsUVzaUNscs1No7WXGtfMykPE6Yv8+1sh
+            username: MY_CONFLUENT_API_KEY
+            password: MY_CONFLUENT_API_SECRET
           metrics_path: /v2/metrics/cloud/export
           params:
             "resource.kafka.id":

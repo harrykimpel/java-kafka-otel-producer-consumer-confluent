@@ -1,3 +1,5 @@
+#!/bin/bash
+
 export JAVA_TOOL_OPTIONS="-javaagent:../../opentelemetry-javaagent.jar"
 export OTEL_TRACES_EXPORTER=otlp
 export OTEL_METRICS_EXPORTER=otlp
@@ -9,5 +11,5 @@ export OTEL_EXPORTER_OTLP_ENDPOINT='https://otlp.nr-data.net'
 export OTEL_EXPORTER_OTLP_HEADERS="api-key=$NEW_RELIC_LICENSE_KEY"
 export OTEL_SERVICE_NAME="kafka-java-producer"
 
-./mvnw spring-boot:run
-
+#./mvnw spring-boot:run
+java -jar demoProducer.jar
