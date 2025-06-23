@@ -11,7 +11,7 @@ import os
 # initialize the New Relic Python agent
 newrelic.agent.initialize('newrelic.ini')
 
-conf = {'bootstrap.servers': 'pkc-pgq85.us-west-2.aws.confluent.cloud:9092',
+conf = {'bootstrap.servers': 'bootstrap.servers:9092',
         'security.protocol': 'SASL_SSL',
         'sasl.mechanism': 'PLAIN',
         'sasl.username': 'MY_CONFLUENT_USERNAME',
