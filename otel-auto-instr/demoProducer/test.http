@@ -5,8 +5,8 @@ Content-Type: application/json
 {
     "customerId": 1,
     "orderId": 1,
-    "dateOfCreation": "2025-06-12",
-    "content": "I love coffee in Stockholm"
+    "dateOfCreation": "2026-05-21",
+    "content": "I love coffee in Vilnius"
 }
 
 ###

@@ -11,5 +11,7 @@ export OTEL_EXPORTER_OTLP_ENDPOINT='https://otlp.nr-data.net'
 export OTEL_EXPORTER_OTLP_HEADERS="api-key=$NEW_RELIC_LICENSE_KEY"
 export OTEL_SERVICE_NAME="kafka-java-producer"
 
+export JAVA_HOME=$(/usr/libexec/java_home -v 21)
+export PATH="$JAVA_HOME/bin:$PATH"
 #./mvnw spring-boot:run
-java -jar demoProducer.jar
+java -jar ./target/demoProducer-0.0.1-SNAPSHOT.jar
