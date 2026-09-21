@@ -5,3 +5,4 @@ target
 *-agent.log
 opentelemetry-javaagent.jar
 names.http
+__pycache__

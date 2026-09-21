@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c ' *)",
+      "Bash(python3 -m py_compile frontend/leveltwo.py python-consumer/app.py)",
+      "Bash(python3 -m py_compile python-consumer/app.py)"
+    ]
+  }
+}

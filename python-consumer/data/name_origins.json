@@ -1,0 +1,704 @@
+{
+  "Aaliyah": [
+    "Arabic",
+    "Swahili"
+  ],
+  "Aanya": [
+    "Indian"
+  ],
+  "Achara": [
+    "Thai"
+  ],
+  "Adaeze": [
+    "Igbo"
+  ],
+  "Adanna": [
+    "Igbo"
+  ],
+  "Adebayo": [
+    "Yoruba"
+  ],
+  "Adelaide": [
+    "French",
+    "German"
+  ],
+  "Aiko": [
+    "Japanese"
+  ],
+  "Aino": [
+    "Finnish"
+  ],
+  "Akira": [
+    "Japanese"
+  ],
+  "Aleksandar": [
+    "Serbian"
+  ],
+  "Ama": [
+    "Akan"
+  ],
+  "Amara": [
+    "Igbo"
+  ],
+  "Amira": [
+    "Arabic"
+  ],
+  "Ananya": [
+    "Indian"
+  ],
+  "Anastasia": [
+    "Greek"
+  ],
+  "Andrei": [
+    "Romanian"
+  ],
+  "Anh": [
+    "Vietnamese"
+  ],
+  "Annika": [
+    "German",
+    "Scandinavian"
+  ],
+  "Antoine": [
+    "French"
+  ],
+  "Aoife": [
+    "Irish"
+  ],
+  "Arjun": [
+    "Indian"
+  ],
+  "Aroha": [
+    "Maori"
+  ],
+  "Astrid": [
+    "Scandinavian"
+  ],
+  "Aurora": [
+    "Italian",
+    "Latin"
+  ],
+  "Avraham": [
+    "Hebrew"
+  ],
+  "Ayasha": [
+    "Native American"
+  ],
+  "Ayşe": [
+    "Turkish"
+  ],
+  "Babatunde": [
+    "Yoruba"
+  ],
+  "Beatriz": [
+    "Portuguese",
+    "Spanish"
+  ],
+  "Bence": [
+    "Hungarian"
+  ],
+  "Bjorn": [
+    "Scandinavian"
+  ],
+  "Bogdan": [
+    "Slavic"
+  ],
+  "Boris": [
+    "Bulgarian"
+  ],
+  "Branislav": [
+    "Serbian",
+    "Slovak"
+  ],
+  "Bronwen": [
+    "Welsh"
+  ],
+  "Budi": [
+    "Indonesian"
+  ],
+  "Camila": [
+    "Spanish",
+    "Portuguese"
+  ],
+  "Camille": [
+    "French"
+  ],
+  "Catarina": [
+    "Portuguese"
+  ],
+  "Catriona": [
+    "Scottish"
+  ],
+  "Chen": [
+    "Chinese"
+  ],
+  "Chenoa": [
+    "Native American"
+  ],
+  "Chiamaka": [
+    "Igbo"
+  ],
+  "Chiara": [
+    "Italian"
+  ],
+  "Chibuzo": [
+    "Igbo"
+  ],
+  "Cillian": [
+    "Irish"
+  ],
+  "Cyrus": [
+    "Persian"
+  ],
+  "Dafydd": [
+    "Welsh"
+  ],
+  "Darius": [
+    "Persian"
+  ],
+  "Despina": [
+    "Greek"
+  ],
+  "Dewi": [
+    "Indonesian",
+    "Balinese"
+  ],
+  "Diego": [
+    "Spanish"
+  ],
+  "Diya": [
+    "Indian"
+  ],
+  "Dmitri": [
+    "Russian"
+  ],
+  "Domagoj": [
+    "Croatian"
+  ],
+  "Dubravka": [
+    "Croatian"
+  ],
+  "Eero": [
+    "Finnish"
+  ],
+  "Egle": [
+    "Lithuanian"
+  ],
+  "Eilidh": [
+    "Scottish"
+  ],
+  "Eitan": [
+    "Hebrew"
+  ],
+  "Ekaterina": [
+    "Bulgarian"
+  ],
+  "Eleni": [
+    "Greek"
+  ],
+  "Elif": [
+    "Turkish"
+  ],
+  "Emre": [
+    "Turkish"
+  ],
+  "Esperanza": [
+    "Spanish"
+  ],
+  "Eszter": [
+    "Hungarian"
+  ],
+  "Ewa": [
+    "Polish"
+  ],
+  "Farah": [
+    "Arabic",
+    "Persian"
+  ],
+  "Fatima": [
+    "Arabic"
+  ],
+  "Folake": [
+    "Yoruba"
+  ],
+  "Freya": [
+    "Norse"
+  ],
+  "Friedrich": [
+    "German"
+  ],
+  "Giovanni": [
+    "Italian"
+  ],
+  "Greta": [
+    "German"
+  ],
+  "Gwyneth": [
+    "Welsh"
+  ],
+  "Ha-eun": [
+    "Korean"
+  ],
+  "Hamish": [
+    "Scottish"
+  ],
+  "Harald": [
+    "Scandinavian",
+    "German"
+  ],
+  "Harry": [
+    "English",
+    "German"
+  ],
+  "Haruki": [
+    "Japanese"
+  ],
+  "Hassan": [
+    "Arabic"
+  ],
+  "Heidi": [
+    "German",
+    "Swiss"
+  ],
+  "Henrik": [
+    "Scandinavian"
+  ],
+  "Henrique": [
+    "Portuguese"
+  ],
+  "Hiroshi": [
+    "Japanese"
+  ],
+  "Ibrahim": [
+    "Arabic"
+  ],
+  "Imani": [
+    "Swahili"
+  ],
+  "Ingrid": [
+    "Norse"
+  ],
+  "Ioana": [
+    "Romanian"
+  ],
+  "Isabela": [
+    "Portuguese",
+    "Spanish"
+  ],
+  "Ivana": [
+    "Croatian",
+    "Serbian"
+  ],
+  "Jabari": [
+    "Swahili"
+  ],
+  "Jamal": [
+    "Arabic"
+  ],
+  "Jana": [
+    "Czech",
+    "Slovak"
+  ],
+  "Ji-ho": [
+    "Korean"
+  ],
+  "Jing": [
+    "Chinese"
+  ],
+  "Joao": [
+    "Portuguese"
+  ],
+  "Joaquin": [
+    "Spanish"
+  ],
+  "Jolanta": [
+    "Lithuanian",
+    "Polish"
+  ],
+  "Joon-woo": [
+    "Korean"
+  ],
+  "Josip": [
+    "Croatian",
+    "Serbian"
+  ],
+  "Kai": [
+    "Hawaiian"
+  ],
+  "Kalani": [
+    "Hawaiian"
+  ],
+  "Kanya": [
+    "Thai"
+  ],
+  "Katerina": [
+    "Greek",
+    "Slavic"
+  ],
+  "Keoni": [
+    "Hawaiian"
+  ],
+  "Khalid": [
+    "Arabic"
+  ],
+  "Kian": [
+    "Persian",
+    "Irish"
+  ],
+  "Klaus": [
+    "German"
+  ],
+  "Kofi": [
+    "Akan"
+  ],
+  "Kojo": [
+    "Akan"
+  ],
+  "Kristaps": [
+    "Latvian"
+  ],
+  "Krzysztof": [
+    "Polish"
+  ],
+  "Kwame": [
+    "Akan",
+    "Ghanaian"
+  ],
+  "Lakshmi": [
+    "Indian"
+  ],
+  "Lars": [
+    "Scandinavian"
+  ],
+  "Layla": [
+    "Arabic"
+  ],
+  "Lei": [
+    "Chinese"
+  ],
+  "Leilani": [
+    "Hawaiian"
+  ],
+  "Lerato": [
+    "Sotho"
+  ],
+  "Levente": [
+    "Hungarian"
+  ],
+  "Liam": [
+    "Irish"
+  ],
+  "Liis": [
+    "Estonian"
+  ],
+  "Lin": [
+    "Chinese"
+  ],
+  "Linh": [
+    "Vietnamese"
+  ],
+  "Linnea": [
+    "Swedish"
+  ],
+  "Lucia": [
+    "Italian",
+    "Spanish"
+  ],
+  "Lucien": [
+    "French"
+  ],
+  "Lukas": [
+    "German",
+    "Czech"
+  ],
+  "Made": [
+    "Balinese"
+  ],
+  "Magdalena": [
+    "Polish",
+    "Spanish"
+  ],
+  "Magnus": [
+    "Scandinavian"
+  ],
+  "Manaia": [
+    "Maori"
+  ],
+  "Margaux": [
+    "French"
+  ],
+  "Mariana": [
+    "Portuguese",
+    "Spanish"
+  ],
+  "Maryam": [
+    "Arabic",
+    "Persian"
+  ],
+  "Mateo": [
+    "Spanish"
+  ],
+  "Matiu": [
+    "Maori"
+  ],
+  "Matteo": [
+    "Italian"
+  ],
+  "Mehmet": [
+    "Turkish"
+  ],
+  "Mei": [
+    "Chinese"
+  ],
+  "Mihai": [
+    "Romanian"
+  ],
+  "Mikhail": [
+    "Russian"
+  ],
+  "Mikkel": [
+    "Danish"
+  ],
+  "Mikko": [
+    "Finnish"
+  ],
+  "Milica": [
+    "Serbian"
+  ],
+  "Min-jun": [
+    "Korean"
+  ],
+  "Minh": [
+    "Vietnamese"
+  ],
+  "Mykola": [
+    "Ukrainian"
+  ],
+  "Nadia": [
+    "Slavic",
+    "Arabic"
+  ],
+  "Naledi": [
+    "Tswana"
+  ],
+  "Ngozi": [
+    "Igbo"
+  ],
+  "Niamh": [
+    "Irish"
+  ],
+  "Nikos": [
+    "Greek"
+  ],
+  "Niloofar": [
+    "Persian"
+  ],
+  "Niran": [
+    "Thai"
+  ],
+  "Noa": [
+    "Hebrew"
+  ],
+  "Oksana": [
+    "Ukrainian"
+  ],
+  "Olga": [
+    "Russian"
+  ],
+  "Olumide": [
+    "Yoruba"
+  ],
+  "Omar": [
+    "Arabic"
+  ],
+  "Ottilie": [
+    "German"
+  ],
+  "Pedro": [
+    "Portuguese",
+    "Spanish"
+  ],
+  "Priya": [
+    "Indian"
+  ],
+  "Radmila": [
+    "Slavic"
+  ],
+  "Rafael": [
+    "Portuguese",
+    "Spanish"
+  ],
+  "Rashid": [
+    "Arabic"
+  ],
+  "Ravi": [
+    "Indian"
+  ],
+  "Ren": [
+    "Japanese"
+  ],
+  "Renata": [
+    "Czech",
+    "Italian"
+  ],
+  "Rhys": [
+    "Welsh"
+  ],
+  "Rohan": [
+    "Indian"
+  ],
+  "Roxana": [
+    "Persian"
+  ],
+  "Sakura": [
+    "Japanese"
+  ],
+  "Sander": [
+    "Dutch"
+  ],
+  "Sanna": [
+    "Finnish"
+  ],
+  "Santiago": [
+    "Spanish"
+  ],
+  "Saoirse": [
+    "Irish"
+  ],
+  "Saskia": [
+    "Dutch"
+  ],
+  "Sean": [
+    "Irish"
+  ],
+  "Seo-yeon": [
+    "Korean"
+  ],
+  "Sergei": [
+    "Russian"
+  ],
+  "Shira": [
+    "Hebrew"
+  ],
+  "Sigrid": [
+    "Scandinavian"
+  ],
+  "Sipho": [
+    "Zulu"
+  ],
+  "Sofia": [
+    "Spanish",
+    "Italian"
+  ],
+  "Solene": [
+    "French"
+  ],
+  "Somchai": [
+    "Thai"
+  ],
+  "Soraya": [
+    "Persian"
+  ],
+  "Stefana": [
+    "Romanian"
+  ],
+  "Sukma": [
+    "Indonesian"
+  ],
+  "Sven": [
+    "Scandinavian"
+  ],
+  "Svetlana": [
+    "Russian"
+  ],
+  "Tahoma": [
+    "Native American"
+  ],
+  "Talia": [
+    "Hebrew"
+  ],
+  "Tane": [
+    "Maori"
+  ],
+  "Taras": [
+    "Ukrainian"
+  ],
+  "Tariq": [
+    "Arabic"
+  ],
+  "Tarmo": [
+    "Estonian"
+  ],
+  "Tatiana": [
+    "Russian"
+  ],
+  "Thabo": [
+    "Sotho",
+    "Tswana"
+  ],
+  "Thierry": [
+    "French"
+  ],
+  "Thuy": [
+    "Vietnamese"
+  ],
+  "Tiago": [
+    "Portuguese"
+  ],
+  "Tomasz": [
+    "Polish"
+  ],
+  "Tomislav": [
+    "Croatian"
+  ],
+  "Vaclav": [
+    "Czech"
+  ],
+  "Vikram": [
+    "Indian"
+  ],
+  "Wei": [
+    "Chinese"
+  ],
+  "Xiulan": [
+    "Chinese"
+  ],
+  "Yaa": [
+    "Akan"
+  ],
+  "Yael": [
+    "Hebrew"
+  ],
+  "Yan": [
+    "Chinese"
+  ],
+  "Yannis": [
+    "Greek"
+  ],
+  "Yelena": [
+    "Russian"
+  ],
+  "Yuki": [
+    "Japanese"
+  ],
+  "Yusuf": [
+    "Arabic",
+    "Turkish"
+  ],
+  "Zanele": [
+    "Zulu"
+  ],
+  "Zara": [
+    "Arabic",
+    "Persian"
+  ],
+  "Zsofia": [
+    "Hungarian"
+  ],
+  "Zuri": [
+    "Swahili"
+  ],
+  "Zvonimir": [
+    "Croatian"
+  ]
+}

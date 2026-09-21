@@ -1,5 +1,6 @@
 # import the New Relic Python Agent
 import newrelic.agent
+import json
 import os
 from openai import OpenAI
 from flask import Flask, render_template, request
@@ -33,25 +34,45 @@ def home():
     return render_template("index.html")
 
 
+def parse_origin_response(raw_text):
+    text = raw_text.strip()
+    if text.startswith("```"):
+        text = text.strip("`")
+        if text.lower().startswith("json"):
+            text = text[4:]
+        text = text.strip()
+    try:
+        parsed = json.loads(text)
+        return {
+            "origin": parsed.get("origin"),
+            "alternative_origin": parsed.get("alternative_origin"),
+            "explanation": parsed.get("explanation", raw_text)
+        }
+    except (ValueError, AttributeError):
+        return {"origin": None, "alternative_origin": None, "explanation": raw_text}
+
+
 @app.route("/prompt", methods=["POST"])
 def prompt():
     input_prompt = request.form.get("input")
-    llm_prompt = "Where does the firstname '"+input_prompt + \
-        "' come from?"
-    llm_prompt = "What is the ethnicity of the first name '" + \
-        input_prompt + "'? " \
-        "Mention the top matching ethnicity and the second level alternative."
-    # in the context of names and their origins. " +\
-    # "Provide just a few words of the main ethnicity, e.g. 'German', 'English', 'French', etc including a mention of a second alternative."
-
     original_input = input_prompt
-    input_prompt = llm_prompt
-    input_prompt += " Please provide an explanation with max. 50 words."
-    output_prompt = chatCompletion(input_prompt)
-    html_output = markdown.markdown(output_prompt)
+
+    llm_prompt = (
+        "What is the linguistic/cultural origin of the first name '" +
+        input_prompt + "'? "
+        "Respond with ONLY a single JSON object (no markdown, no code fences) "
+        "with exactly three keys: \"origin\" (the single most likely origin, "
+        "e.g. \"Japanese\", \"Irish\", \"Arabic\"), \"alternative_origin\" "
+        "(the second most likely origin), and \"explanation\" "
+        "(a max. 50 word explanation of the name's etymology/origin)."
+    )
+    output_prompt = chatCompletion(llm_prompt)
+    parsed = parse_origin_response(output_prompt)
+    html_output = markdown.markdown(parsed["explanation"])
 
     # make a POST request to localhost:8080/orders endpoint
-    # with the input and output prompts
+    # with the input and the structured origin answer (as a JSON string,
+    # since the orders DTO only carries a plain "content" string through to Kafka)
     response = requests.post(
         "http://localhost:8080/orders",
         json={
@@ -59,7 +80,7 @@ def prompt():
             "orderId": "1",
             "dateOfCreation": "2025-06-02",
             "input": original_input,
-            "content": output_prompt
+            "content": json.dumps(parsed)
         }
     )
     if response.status_code != 200:
